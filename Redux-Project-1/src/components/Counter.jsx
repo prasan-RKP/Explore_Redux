@@ -16,6 +16,8 @@ const Counter = () => {
          setNumber('');
    }
 
+   const handleReset = () => {dispatch({type: "RESET"})};
+
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 flex items-center justify-center">
@@ -42,6 +44,10 @@ const Counter = () => {
 
                     <button onClick={handleDec} className="px-8 py-3 bg-red-500 hover:bg-red-600 active:scale-95 transition-all duration-200 rounded-xl text-white font-semibold shadow-lg">
                         -1
+                    </button>
+
+                    <button onClick={handleReset} className="px-8 py-3 bg-violet-600 hover:bg-violet-700 active:scale-95 transition-all duration-200 rounded-xl text-white font-semibold shadow-lg">
+                        Reset
                     </button>
 
                 </div>
