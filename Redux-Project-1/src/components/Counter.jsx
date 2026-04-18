@@ -5,18 +5,18 @@ const Counter = () => {
 
     const [number, setNumber] = useState('');
 
-  const counter =  useSelector(store => store.counter);
-   const dispatch = useDispatch();
+    const counter = useSelector(store => store.counter);
+    const dispatch = useDispatch();
 
-   const handleInc = () => {dispatch({type: 'INC'})};
-   const handleDec = () => {dispatch({type: 'DEC'})};
-   const handleAddNum = () => {
-         if(number === undefined) return;
-         dispatch({type: "ADD", payload: {num: Number(number)}});
-         setNumber('');
-   }
+    const handleInc = () => { dispatch({ type: 'INC' }) };
+    const handleDec = () => { dispatch({ type: 'DEC' }) };
+    const handleAddNum = () => {
+        if (number === undefined) return;
+        dispatch({ type: "ADD", payload: { num: Number(number) } });
+        setNumber('');
+    }
 
-   const handleReset = () => {dispatch({type: "RESET"})};
+    const handleReset = () => { dispatch({ type: "RESET" }) };
 
 
     return (
@@ -32,7 +32,7 @@ const Counter = () => {
                     Counter Value: <span className="text-white font-semibold">{counter}</span>
                 </p>
 
-                <input value={number} onChange={(e)=> setNumber(e.target.value)} type="text" className='bg-gray-400 h-10 rounded-lg text-black pl-4 mb-5 mr-5'/>
+                <input value={number} onChange={(e) => setNumber(e.target.value)} type="text" className='bg-gray-400 h-10 rounded-lg text-black pl-4 mb-5 mr-5' />
 
                 <button onClick={handleAddNum} className='px-5 py-3 bg-gray-400 rounded-lg'>Add</button>
 
