@@ -8,9 +8,6 @@ const Todo = () => {
 
     const [input, setInput] = useState('');
     const [id, setId] = useState('');
-    //const [myTodos, setMyTodos] = useState(todos);
-
-
 
 
     const addTodo = () => {
