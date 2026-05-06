@@ -7,7 +7,8 @@ const Todo = () => {
     const dispatch = useDispatch();
 
     const [input, setInput] = useState('');
-
+    const [id, setId] = useState('');
+    //const [myTodos, setMyTodos] = useState(todos);
 
     const addTodo = () => {
         if(!input) return;
