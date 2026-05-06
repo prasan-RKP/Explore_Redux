@@ -1,33 +1,45 @@
-// import {createStore} from 'redux';
+import { createStore } from "redux";
 
-// const INI_VAL= {
-//     todos: []
-// }
+const INI_VAL = {
+  todos: [],
+};
 
+const todoReducer = (store = INI_VAL, action) => {
+  switch (action.type) {
+    case "ADD_TODO":
+      return {
+        todos: [
+          {
+            text: action.payload.text,
+            uid: Date.now().toString(36).slice(-4),
+            mark: false,
+          },
+          ...store.todos,
+        ],
+      };
 
-// const counterReducer = (store=INI_VAL, action) => {
-//     switch(action.type){
+    case "DEL_TODO":
+      return {
+        todos: store.todos.filter((tod) => tod?.uid !== action.payload.id),
+      };
 
-//         // commnet out all to see counter question
-        
-//         case "INC" :
-//             return {counter: store.counter + 1} 
-//      const counter = useSelector(store => store.counter);
+    case "DEL_ALL":
+      return { todos: [] };
 
-//         case 'DEC' :
-//             return  {counter: store.counter > 0 ? store.counter - 1 : 0} 
-            
-//         case 'ADD' :
-//             return {counter: store.counter + action.payload.num}
+    case "MARK_TODO":
+      return {
+        todos: store.todos.map((to) =>
+          to?.uid === action.payload.id
+            ? { ...to, mark: action.payload.val }
+            : to,
+        ),
+      };
 
-//         case 'RESET': {
-//             return {counter: store.counter = 0}
-//         }    
-//         default : 
-//           return store    
-//     }
-// }
+    default:
+      return store;
+  }
+};
 
-// const counterStore = createStore(counterReducer);
+const todoStore = createStore(todoReducer);
 
-// export default counterStore;
+export default todoStore;
